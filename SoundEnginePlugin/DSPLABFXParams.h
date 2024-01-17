@@ -33,11 +33,17 @@ the specific language governing permissions and limitations under the License.
 // Add parameters IDs here, those IDs should map to the AudioEnginePropertyID
 // attributes in the xml property definition.
 static const AkPluginParamID PARAM_DELAYTIME_ID = 0;
-static const AkUInt32 NUM_PARAMS = 1;
+static const AkPluginParamID PARAM_FEEDBACK_ID = 1;
+static const AkUInt32 NUM_PARAMS = 2;
+
+// Default parameter values
+#define DSPLABFXPARAM_DELAYTIME_DEF		(0.5f)	
+#define DSPLABFXPARAM_FEEDBACK_DEF		(0.5f)
 
 struct DSPLABRTPCParams
 {
     AkReal32 fDelayTime;
+    AkReal32 fFeedback;
 };
 
 struct DSPLABNonRTPCParams

@@ -53,7 +53,8 @@ AKRESULT DSPLABFXParams::Init(AK::IAkPluginMemAlloc* in_pAllocator, const void* 
     if (in_ulBlockSize == 0)
     {
         // Initialize default parameters here
-        RTPC.fDelayTime = 0.5f;
+        RTPC.fDelayTime = DSPLABFXPARAM_DELAYTIME_DEF;
+        RTPC.fFeedback = DSPLABFXPARAM_FEEDBACK_DEF;
         m_paramChangeHandler.SetAllParamChanges();
         return AK_Success;
     }
@@ -74,6 +75,7 @@ AKRESULT DSPLABFXParams::SetParamsBlock(const void* in_pParamsBlock, AkUInt32 in
 
     // Read bank data here
     RTPC.fDelayTime = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.fFeedback = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
     CHECKBANKDATASIZE(in_ulBlockSize, eResult);
     m_paramChangeHandler.SetAllParamChanges();
 
@@ -90,6 +92,10 @@ AKRESULT DSPLABFXParams::SetParam(AkPluginParamID in_paramID, const void* in_pVa
     case PARAM_DELAYTIME_ID:
         RTPC.fDelayTime = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(PARAM_DELAYTIME_ID);
+        break;
+    case PARAM_FEEDBACK_ID:
+        RTPC.fFeedback = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(PARAM_FEEDBACK_ID);
         break;
     default:
         eResult = AK_InvalidParameter;

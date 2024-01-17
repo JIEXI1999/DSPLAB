@@ -89,7 +89,8 @@ void DSPLABFX::Execute(AkAudioBuffer* io_pBuffer)
     AkUInt32 totalTailFrames = 100000;
     m_FXTailHandler.HandleTail(io_pBuffer, totalTailFrames);
     AkReal32* AK_RESTRICT pBufL = (AkReal32 * AK_RESTRICT)io_pBuffer->GetChannel(1);
-    if (m_pParams->m_paramChangeHandler.HasChanged(PARAM_DELAYTIME_ID))
+    if (m_pParams->m_paramChangeHandler.HasChanged(PARAM_DELAYTIME_ID) ||
+        m_pParams->m_paramChangeHandler.HasChanged(PARAM_FEEDBACK_ID))
     {
         delayBuffer.SetUp(m_SampleRate, m_pParams);
     }

@@ -39,6 +39,7 @@ bool DSPLABPlugin::GetBankParameters(const GUID & in_guidPlatform, AK::Wwise::Pl
 {
     // Write bank data here
     in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "DelayTime"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Feeback"));
 
     return true;
 }

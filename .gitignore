@@ -1,0 +1,11 @@
+# Ignored File Directories
+Output/
+.vscode/
+Help/
+.vs/
+
+# Ignored File Types
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.sln
